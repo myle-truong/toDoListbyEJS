@@ -6,7 +6,7 @@ const port = 3000;
 const app = express();
 
 app.set('view engine', 'ejs');
-
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     let today = new Date();
@@ -20,6 +20,11 @@ app.get('/', (req, res) => {
 
     res.render('list', { day: day });
 
+});
+
+app.post('/', function(req, res) {
+    let item = req.body.newItem;
+    console.log(item)
 });
 
 app.listen(3000, function() {
