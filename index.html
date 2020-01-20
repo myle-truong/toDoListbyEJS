@@ -9,8 +9,23 @@
 </head>
 
 <body>
-    <h1> so tired !!!!</h1>
-    <p>Better should go to sleep!!!!</p>
+    <h1>
+        <%= thatDay %>
+    </h1>
+    <ul>
+        <li>Buy</li>
+        <li>Eat</li>
+        <li>Sleep</li>
+        <li>
+            <%= newItem %>
+        </li>
+    </ul>
+
+    <form action="/" method="POST">
+
+        <input type="text" name="newItem">
+        <button type="submit" name="button">add</button>
+    </form>
     <script src="app.js"></script>
 </body>
 
