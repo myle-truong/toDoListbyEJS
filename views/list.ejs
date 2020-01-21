@@ -5,28 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Todo List</title>
 </head>
 
 <body>
-    <h1>
-        <%= thatDay %>
-    </h1>
+    <div class="box">
+        <h1>
+            <%= listTitle %>
+        </h1>
+    </div>
+    <div class="box">
+        <% for ( let i=0; i<newListItems.length; i++) { %>
+            <div class="item">
+                <input type="checkbox">
+                <p>
+                    <%= newListItems[i] %>
+                </p>
+            </div>
+            <% } %>
+                <form action="/" method="POST">
+                    <input type="text" name="newItem" placeholder="new Item" autocomplete="off">
+                    <button type="submit" name="button">add</button>
+                </form>
+    </div>
+
     <ul>
-        <li>Buy</li>
-        <li>Eat</li>
-        <li>Sleep</li>
-        <li>
-            <%= newListItem %>
-        </li>
+
+
+
+
+
+
     </ul>
 
-    <form action="/" method="POST">
 
-        <input type="text" name="newItem">
-        <button type="submit" name="button">add</button>
-    </form>
-    <script src="app.js"></script>
 </body>
 
 </html>
