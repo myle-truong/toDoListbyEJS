@@ -1,10 +1,10 @@
 //Framwork
 const express = require('express');
 const bodyParser = require('body-parser');
-const request = require('request');
 const ejs = require('ejs');
 
 // pass the post value into this variable
+// let item = [];
 let items = [];
 let workItems = [];
 
@@ -36,8 +36,8 @@ app.get('/', function(req, res) {
 
 //Get data from the form
 app.post('/', function(req, res) {
-    //console.log(req.body);
-    let item = req.body.newItem;
+    console.log(req.body);
+    let items = req.body.newItem;
 
     if (req.body.list === 'Work') {
         workItems.push(item);
@@ -51,7 +51,7 @@ app.post('/', function(req, res) {
 
 
 app.get('/work', function(req, res) {
-    let item = req.body.newItem;
+    let items = req.body.newItem;
 
     res.render('list', {
         listTitle: 'Work List',
