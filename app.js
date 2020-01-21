@@ -1,21 +1,22 @@
+//Framwork
 const express = require('express');
 const bodyParser = require('body-parser');
+const request = require('request');
 const ejs = require('ejs');
 
-
-const app = express();
-
-let items = ["Shopping", "Studying", "Enjoying"];
+// pass the post value into this variable
+let items = [];
 let workItems = [];
 
-//ejs documents: link: github
+//creat app
+const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({ extended: true }));
-//embed public file 
-app.use(express.static("public"));
 
-app.get('/', (req, res) => {
+//setup the route
+app.get('/', function(req, res) {
 
     let today = new Date();
 
@@ -27,30 +28,43 @@ app.get('/', (req, res) => {
 
     let day = today.toLocaleDateString('en-US', options);
 
-    res.render('list', { listTitle: day, newListItems: items });
-
+    res.render('list', {
+        listTitle: day,
+        newListItems: items
+    });
 });
 
+//Get data from the form
 app.post('/', function(req, res) {
-
+    //console.log(req.body);
     let item = req.body.newItem;
 
-    items.push(item);
+    if (req.body.list === 'Work') {
+        workItems.push(item);
+        res.redirect('/work');
 
-    res.redirect('/');
+    } else {
+        items.push(item);
+        res.redirect('/');
+    }
 });
 
 
-app.get('/work', (req, res) => {
-    // res.render('list', { listTitle: 'Work List', newListItems: 'workItems' });
-    res.render('list', { listTitle: 'Work List', newListItems: workItems });
-});
-
-app.post('/work', (req, res) => {
+app.get('/work', function(req, res) {
     let item = req.body.newItem;
-    workItems.push(item);
-    res.redirect('/')
+
+    res.render('list', {
+        listTitle: 'Work List',
+        newListItems: workItems
+    });
 });
+
+// app.post('/work', (req, res) => {
+//     let item = req.body.newItem;
+
+//     workItems.push(item);
+//     res.redirect('/')
+// });
 
 
 app.listen(3000, function() {
