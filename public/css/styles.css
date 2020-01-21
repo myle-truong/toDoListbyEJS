@@ -1,12 +1,14 @@
 html {
     background-color: #E4E9FD;
     background-image: -webkit-linear-gradient(65deg, #2d98da 50%, #E4E9FD 50%);
+    /* background-image: url('https://images.unsplash.com/photo-1577221017345-1b950ec7a8d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+    background-image: repeat; */
     min-height: 1000px;
     font-family: 'helvetica neue';
 }
 
 h1 {
-    color: #388E3C;
+    color: whitesmoke;
     padding: 10px;
     text-align: center;
 }
@@ -20,7 +22,7 @@ h1 {
 }
 
 #heading {
-    background-color: #A683E3;
+    background-color: #d35400;
     text-align: center;
 }
 
